@@ -18,7 +18,6 @@ def go(args):
     run.config.update(args)
 
     # Download input artifact. This will also log that this script is using this
-    
     run = wandb.init(project="nyc_airbnb", group="cleaning", save_code=True)
     artifact_local_path = run.use_artifact(args.input_artifact).file()
     df = pd.read_csv(artifact_local_path)
@@ -30,8 +29,8 @@ def go(args):
     # Convert last_review to datetime
     df['last_review'] = pd.to_datetime(df['last_review'])
 
-    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
-    df = df[idx].copy()
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2) #These lines are already here, so I will not change anything except for add this comment.
+    df = df[idx].copy() #These lines are already here, so I will not change anything except for add this comment.
     # Save the cleaned file
     df.to_csv('clean_sample.csv',index=False)
 
